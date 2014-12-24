@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>RedTicker</title>
+    <script src="http://misc.360buyimg.com/shangou/v3/skin/base/js/jquery.min.js"></script>
+    <script src="redTicker.js"></script>
+    <style>
+       .bk {
+            width:300px;
+            height:30px;
+            border:2px #000 solid;
+            background:#ccc;
+            margin-top:20px;
+             margin-left:20px;
+          
+        }
+
+    </style>
+</head>
+   
+<body>
+ 
+    <script>
+        var arr = [];
+        for (var i = 0; i < 999; i++) {
+            
+            arr.push('<div class="bk"><span secondcount='+window.parseInt(Math.random() * 999999999)+'></span></div>');
+        }
+        arr = arr.join('');
+        $("body").prepend(arr)
+        redTicker.init();
+        redTicker.adapt();
+        redTicker.render();
+
+        var _delay;
+        $(window).scroll(function (e) {
+            window.clearTimeout(_delay);
+            _delay = window.setTimeout(function () {
+                redTicker.render();
+            }, 200);
+
+        });
+
+
+
+    </script>
+</body>
+</html>
